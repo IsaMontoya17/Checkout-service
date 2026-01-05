@@ -1,0 +1,23 @@
+package com.digitalhouse.checkout_service.controller;
+
+import com.digitalhouse.checkout_service.entity.Checkout;
+import com.digitalhouse.checkout_service.service.ICheckoutService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "/checkout")
+public class CheckoutRestController {
+
+    private final ICheckoutService checkoutService;
+
+    public CheckoutRestController(ICheckoutService checkoutService) {
+        this.checkoutService = checkoutService;
+    }
+
+    @GetMapping
+    public Checkout getCheckout(@RequestParam List<String> productIds) {
+        return checkoutService.buildCheckout(productIds);
+    }
+}
