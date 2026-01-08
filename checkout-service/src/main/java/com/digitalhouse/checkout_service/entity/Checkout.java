@@ -16,4 +16,8 @@ public class Checkout {
     private String url;
     private String totalAmount;
     private List<String> availableMethods;
+
+    public Checkout(String id) {
+        this.id = id;
+    }
 }
