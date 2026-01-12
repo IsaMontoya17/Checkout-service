@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "products-service")
+@FeignClient(name ="products-service")
 public interface IFeignProductRepository {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/products")
-    ProductDto getProductById(@RequestParam String id);
+    @RequestMapping(method= RequestMethod.GET,value ="/products")
+    ProductDto getProductById(@RequestParam String id,@RequestParam Boolean throwError);
+
 }

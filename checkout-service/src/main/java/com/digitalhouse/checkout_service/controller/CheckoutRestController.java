@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/checkout")
+@RequestMapping(value ="/checkout")
 public class CheckoutRestController {
-
-    private final ICheckoutService checkoutService;
+    private ICheckoutService checkoutService;
 
     public CheckoutRestController(ICheckoutService checkoutService) {
+        super();
         this.checkoutService = checkoutService;
     }
 
@@ -22,12 +22,25 @@ public class CheckoutRestController {
         return new Checkout(id);
     }
 
-    @GetMapping
-    public Checkout getCheckout(@RequestParam List<String> productIds, @RequestHeader("X-Request-from") String requestFrom, @RequestHeader()Map<String, String> headers) {
-        System.out.println("Enviado desde "+ requestFrom);
-        if(!requestFrom.equals("gateway")){
-            return null;
+
+    @GetMapping()
+    public Checkout getCheckout(@RequestParam List<String> productIds,
+                                @RequestHeader("X-Request-from") List<String> requestFromValues) {
+
+        System.out.println("Valores del header X-Request-from: " + requestFromValues);
+
+        boolean fromGateway = requestFromValues.stream()
+                .anyMatch(value -> value.trim().equals("gateway"));
+
+        if (!fromGateway) {
+            return Checkout.builder()
+                    .id("error")
+                    .url("Request must come from gateway")
+                    .totalAmount("0.0")
+                    .availableMethods(List.of())
+                    .build();
         }
+
         return checkoutService.buildCheckout(productIds);
     }
 }
