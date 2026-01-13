@@ -27,7 +27,7 @@ public class ProductService  implements IProductService{
     @Retry(name="product")
     public ProductDto getProduct(String id) {
         log.info("intentando obtener el producto con ID: "+id);
-        return feignProductRepository.getProductById(id,true);
+        return feignProductRepository.getProductById(id,false); //true es para probar el circuit breaker
     }
 
     public ProductDto getProductFallbackMethod(String id, CallNotPermittedException exception ) {
