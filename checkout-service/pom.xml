@@ -20,55 +20,94 @@
 	</properties>
 
 	<dependencies>
+		<!-- DEPENDENCIAS BÁSICAS -->
+
+		<!-- Spring Boot Web: Para crear aplicaciones web RESTful -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+		<!-- Spring Cloud Config Client: Para obtener configuración desde Config Server -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+
+		<!-- Eureka Client: Para registro y descubrimiento de servicios -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
+
+		<!-- OpenFeign: Para comunicación HTTP declarativa entre microservicios -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
+
+		<!-- DEPENDENCIAS DE SEGURIDAD -->
+
+		<!-- OAuth2 Resource Server: Para autenticación/autorización con JWT -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 		</dependency>
+
+		<!-- DEPENDENCIAS DE RESILIENCIA -->
+
+		<!-- Resilience4J Circuit Breaker: Para patrones de resiliencia (circuit breaker, retry, etc.) -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
+
+		<!-- DEPENDENCIAS DE TRAZABILIDAD DISTRIBUIDA (DISTRIBUTED TRACING) -->
+
+		<!-- Micrometer Tracing Bridge OTel: Para integración con OpenTelemetry -->
 		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-tracing-bridge-otel</artifactId>
 		</dependency>
+
+		<!-- OpenTelemetry Zipkin Exporter: Para exportar trazas a Zipkin -->
 		<dependency>
 			<groupId>io.opentelemetry</groupId>
 			<artifactId>opentelemetry-exporter-zipkin</artifactId>
 		</dependency>
+
+		<!-- Feign Micrometer: Para métricas de llamadas Feign -->
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-micrometer</artifactId>
 		</dependency>
+
+		<!-- DEPENDENCIAS DE MONITOREO Y ACTUATOR -->
+
+		<!-- Spring Boot Actuator: Para endpoints de monitoreo y gestión -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
+		<!-- Spring Boot AOP: Para programación orientada a aspectos -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
+
+		<!-- DEPENDENCIAS DE TEST -->
+
+		<!-- Spring Boot Test: Para pruebas unitarias y de integración -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- UTILIDADES -->
+
+		<!-- Lombok: Para reducir código boilerplate (getters, setters, constructores) -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
